@@ -9,7 +9,7 @@ class H3DAPIWinDepsConan(ConanFile):
 
 
     def build(self):
-        if self.settings.os == "Windows" and self.compiler == "Visual Studio":
+        if self.settings.os == "Windows": # check for MSVC??
             vs_version = int(str(self.settings.compiler.version))
             if vs_version == 10:
                 folder = 'vs2010'
@@ -23,7 +23,7 @@ class H3DAPIWinDepsConan(ConanFile):
                 raise Exception('Unsupported MSVC Compiler %s' % vs_version)
 
             repo_url = "https://www.h3dapi.org:8090/External/%s/" % folder
-            tools.run("git svn clone %s source" % repo_url)
+            self.run("git svn clone %s source" % repo_url)
         else:
             raise Exception("Binary does not exist for these settings")
 
