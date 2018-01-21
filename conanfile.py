@@ -6,6 +6,7 @@ class H3DAPIWinDepsConan(ConanFile):
     version = "2.3"
     settings = "os", "compiler"
     url = "https://github.com/ulricheck/h3dapi_windows_dependencies"
+    short_paths = True
 
 
     def build(self):
