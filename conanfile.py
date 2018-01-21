@@ -24,7 +24,7 @@ class H3DAPIWinDepsConan(ConanFile):
                 raise Exception('Unsupported MSVC Compiler %s' % vs_version)
 
             repo_url = "https://www.h3dapi.org:8090/External/%s/" % folder
-            self.run("git svn clone %s source" % repo_url)
+            self.run("svn checkout %s source" % repo_url)
         else:
             raise Exception("Binary does not exist for these settings")
 
