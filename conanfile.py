@@ -28,11 +28,12 @@ class H3DAPIWinDepsConan(ConanFile):
             raise Exception("Binary does not exist for these settings")
 
     def package(self):
-        self.copy("*", src="source/include") 
-        self.copy("*", src="source/bin32") 
-        self.copy("*", src="source/bin64") 
-        self.copy("*", src="source/lib32") 
-        self.copy("*", src="source/lib64") 
+        self.copy("*.h", "include", "build/include", keep_path=True)
+        self.copy("*", "include", "source/include", keep_path=True) 
+        self.copy("*", "bin32", "source/bin32", keep_path=True) 
+        self.copy("*", "bin64", "source/bin64", keep_path=True) 
+        self.copy("*", "lib32", "source/lib32", keep_path=True) 
+        self.copy("*", "lib64", "source/lib64", keep_path=True) 
 
     def package_info(self):  # still very useful for package consumers
         self.env_info.H3D_EXTERNAL_ROOT = self.package_folder
